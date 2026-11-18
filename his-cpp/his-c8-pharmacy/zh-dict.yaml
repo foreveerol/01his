@@ -1,0 +1,123 @@
+pharmacy:
+  stockin:
+    tag: 药房入库单
+    list:
+      summary: 条件分页查询入库单列表
+    query-one:
+      summary: 获取单条入库单详情
+    create:
+      summary: 新建空白入库单
+    save-draft:
+      summary: 临时保存入库草稿
+    save-submit:
+      summary: 保存入库单并提交审批
+    submit:
+      summary: 提交入库单进入审批流
+    withdraw:
+      summary: 撤回已提交的入库单
+    approve:
+      summary: 审批通过入库单
+    reject:
+      summary: 驳回入库单审批
+    remove:
+      summary: 删除入库单
+    type:
+      purchase: 采购入库
+      return: 退货入库
+      transfer: 调拨入库
+      other: 其他入库
+    field:
+      orderNo: 入库单号
+      busNo: 入库单业务编号
+      supplierName: 供应商名称
+      stockInType: 入库类型
+      stockInDate: 入库日期
+      drugCount: 药品总数
+      totalAmount: 总金额
+      status: 单据状态
+      creator: 制单人
+      approverId: 审批人ID
+      detailId: 明细ID
+      drugName: 药品名称
+      specification: 规格
+      manufacturer: 生产厂家
+      batchNo: 批号
+      expiryDate: 有效期
+      unit: 单位
+      quantity: 数量
+      unitPrice: 单价
+      rejectReason: 驳回原因
+      remark: 备注
+      drugList: 药品明细列表
+      approvalComment: 审批意见
+  inventory-check:
+    tag: 药房盘点单
+    list:
+      summary: 条件分页查询盘点单列表
+    query-one:
+      summary: 获取单条盘点单详情
+    create:
+      summary: 新建空白盘点单
+    save-draft:
+      summary: 临时保存盘点结果草稿
+    save-submit:
+      summary: 保存盘点单并提交审批
+    submit:
+      summary: 提交盘点单进入审批流
+    withdraw:
+      summary: 撤回已提交的盘点单
+    approve:
+      summary: 审批通过盘点单
+    reject:
+      summary: 驳回盘点单审批
+    remove:
+      summary: 删除盘点单
+    type:
+      fullCheck: 全面盘点
+      spotCheck: 抽查盘点
+    field:
+      checkNo: 盘点单号
+      checkType: 盘点类型
+      checkDate: 盘点日期
+      drugCount: 药品总数
+      status: 单据状态
+      checker: 盘点人
+      detailId: 明细ID
+      pharmacyName: 盘点药房
+      itemType: 项目类型
+      drugName: 药品名称
+      drugPrice: 药品单价
+      specification: 规格
+      batchNo: 批号
+      systemQty: 系统库存数
+      actualQty: 实盘数量
+      actualPrice: 实盘金额
+      diffQty: 差异数
+      diffPrice: 盈亏金额
+      diffReason: 差异原因
+      rejectReason: 驳回原因
+      remark: 备注
+      drugList: 药品明细列表
+      approvalComment: 审批意见
+  status:
+    draft: 草稿
+    approving: 审批中
+    approved: 已生效
+    rejected: 已驳回
+  mock:
+    saveDraftSuccess: 保存草稿成功
+    submitSuccess: 提交审批成功
+    withdrawSuccess: 撤回成功
+    approveSuccess: 审批通过
+    rejectSuccess: 驳回成功
+    removeSuccess: 删除成功
+supply:
+  tags:
+    main: 供应请求接口
+  delete-document:
+    summary: 药房盘点单删除单据
+  reject-approval:
+    summary: 药房盘点单驳回审批
+  field:
+    requestId: 单据编号
+    remark: 驳回原因/备注

@@ -1,0 +1,318 @@
+
+dispense:
+  return:
+    tag: 住院退药接口
+    queue:
+      summary: 获取住院退药患者队列
+    query:
+      summary: 获取患者退药明细
+    confirm:
+      summary: 确认退药（对所选药品执行退药并回补库存）
+    status:
+      pending: 待退药
+    field:
+      name: 患者姓名
+      gender: 性别
+      age: 年龄
+      hospitalizationNo: 住院号
+      ward: 所属病区
+      bedNo: 床位号
+      refundStatus: 退药状态
+      detailId: 退药明细ID
+      serialNo: 序号
+      drugName: 药品名称
+      quantity: 数量
+      dispenseDate: 发药日期
+      refundDetailIds: 退药明细ID列表
+      patientInfo: 患者信息
+      drugList: 待退药品列表
+    mock:
+      name: 张三
+      gender: 女
+      ward: 内科疗区
+      bedNo: 1号床
+      drugName: 布洛芬混悬液
+      success: 退药确认成功
+      name2: 李四
+      gender2: 男
+      bedNo2: 2号床
+  outpatient-dispense:
+    tag: 门诊发药
+    queue:
+      summary: 获取门诊发药患者队列
+    detail:
+      summary: 获取门诊患者药品明细
+    batch:
+      summary: 批量确认发药
+    field:
+      status: 状态
+      prescriptionNo: 处方号
+      name: 患者姓名
+      gender: 性别
+      age: 年龄
+      department: 就诊科室
+      prescriptionDate: 处方日期
+      dispenseStatus: 发药状态
+      detailId: 明细ID
+      drugName: 药品名称
+      specification: 规格
+      quantity: 数量
+      usage: 用法用量
+      detailIds: 发药明细ID列表
+      dispenser: 发药人
+      patientInfo: 患者信息
+      drugList: 药品明细列表
+      queue_no: 排队号
+      visit_date: 就诊日期
+      prescription_count: 处方数量
+      dispense_status: 发药状态
+      doctor_name: 医生姓名
+      charge_time: 收费时间
+      diagnosis: 诊断
+      insurance_type: 医保类型
+      pharmacist_id: 药师id
+      dispense_time: 发药时间
+      id: 患者编号
+      batchNum: 药品批次号
+      money: 金额
+      issuing_warehouse: 发药仓库
+      trace_code: 追溯码
+      manufacturer: 厂家
+      visit_no: 就诊号
+      outpatient_type: 门诊类型
+    mock:
+      drugSpecifications: 2ml:15mg
+      batch_no: 001-007
+      issued_warehouse: 门诊西药房
+      manufacturer: 四川科伦药业
+      trace_code: ""
+  outpatient-return:
+    tag: 门诊退药
+    queue:
+      summary: 获取门诊退药患者队列
+    detail:
+      summary: 获取门诊退药明细
+    confirm:
+      summary: 确认门诊退药
+    reject:
+      summary: 拒绝门诊退药申请
+      success: 申请已拒绝
+    field:
+      refundNo: 退费单号
+      name: 患者姓名
+      gender: 性别
+      age: 年龄
+      department: 就诊科室
+      refundDate: 退费日期
+      refundStatus: 退费状态
+      detailId: 明细ID
+      drugName: 药品名称
+      specification: 规格
+      quantity: 数量
+      dispenseQty: 发药数量
+      refundQty: 退药数量
+      patientInfo: 患者信息
+      drugList: 退药药品列表
+      refundDetailIds: 退费明细ID
+      rejectReason: 驳回原因
+     
+
+      
+  outpatient-record:
+    tag: 门诊发退药记录
+    query:
+      summary: 查询门诊发退药记录
+    export:
+      summary: 导出门诊发退药记录
+    field:
+      name: 患者姓名
+      pharmacy: 药房
+      department: 开单科室
+      prescriptionNumber: 处方号
+      outpatientNumber: 门诊号
+      recordType: 记录类型
+      projectType: 项目类型
+      drugName: 药品名称
+      drugSpecifications: 药品规格
+      quantity: 数量
+      unitPrice: 单价
+      totalPrice: 总金额
+      batchNumber: 批号
+      traceCode: 追溯码
+      manufacturer: 厂家
+      dispenseName: 发药人
+      dispenseDate: 发药时间
+      dispenseTime: 发药时间
+      startDate: 开始日期
+      endDate: 结束日期
+      total: 总数
+    mock:
+      prescriptionNumber1: CP2026-07-210001
+      recordType1: 发药
+      name1: 张三
+      outpatientNumber1: EN2026-07-210001
+      drugName1: 氯化钠注射液
+      drugSpecifications1: 250ml:2.25g
+      quantity1: 1瓶
+      unitPrice1: 2.99
+      totalPrice1: 2.99
+      batchNumber1: 001-007
+      traceCode1: ""
+      manufacturer1: 四川科伦药业
+      department1: 门诊内科
+      dispenseDate1: 2026-07-22 16:20:51
+      pharmacy1: 门诊西药房
+      dispenseName1: admin
+      prescriptionNumber2: CP2026-07-210002
+      recordType2: 发药
+      name2: 李四
+      outpatientNumber2: EN2026-07-210002
+      drugName2: 阿莫西林胶囊
+      drugSpecifications2: 0.5g*24粒
+      quantity2: 1盒
+      unitPrice2: 7.97
+      totalPrice2: 7.97
+      batchNumber2: 001-008
+      traceCode2: ""
+      manufacturer2: 山东润华制药
+      department2: 门诊内科
+      dispenseDate2: 2026-07-22 16:20:51
+      pharmacy2: 门诊西药房
+      dispenseName2: admin
+  inpatient-dispense:
+    tag: 住院发药
+    queue:
+      summary: 获取住院发药汇总队列
+    detail:
+      summary: 获取住院患者药品明细
+    verify:
+      summary: 审核通过发药
+    reject:
+      summary: 驳回发药申请
+    field:
+      summaryNo: 汇总单号
+      summaryDate: 汇总日期
+      summaryStatus: 汇总状态
+      dispenseStatus: 发药状态
+      id: 汇总单ID
+      drugCount: 药品总数
+      name: 患者姓名
+      hospitalizationNo: 住院号
+      bedNo: 床位号
+      ward: 所属病区
+      detailId: 药品明细ID
+      detailIds: 审核明细ID列表
+      drugName: 药品名称
+      specification: 规格
+      quantity: 数量
+      verifyIds: 审核明细ID列表
+      drugList: 药品明细列表
+      rejectReason: 驳回原因
+      startDate: 开始日期
+      endDate: 结束日期
+      createTime: 创建时间
+      pharmacy: 药房名称
+      applicant: 申请人
+      dispensingPharmacist: 调配药师
+      drugReceiver: 领药人
+      serialNo: 序号
+      total: 总数
+      summaryList: 汇总单列表
+      pageIndex: 页码
+      pageSize: 每页条数
+      #rejectReason: 驳回原因
+    mock:
+      summaryStatus: 审核中
+      pharmacy: 住院西药房
+      drugName1: 替米沙坦片
+      drugName2: 阿莫西林胶囊
+      quantity1: 1盒
+      quantity2: 2盒
+      specification1: 40mg
+      specification2: 0.5g*24粒
+  inpatient-record:
+    tag: 住院发退药记录
+    query:
+      summary: 查询住院发退药记录
+    export:
+      summary: 导出住院发退药记录
+    field:
+      name: 患者姓名
+      patientName: 患者
+      hospitalizationNo: 住院号
+      ward: 所属病区
+      bedNo: 床位号
+      recordNo: 记录单号
+      recordType: 记录类型
+      businessType: 业务类型
+      drugName: 药品名称
+      specification: 规格
+      quantity: 数量
+      unitPrice: 单价
+      totalAmount: 金额
+      batchNo: 批号
+      traceCode: 追溯码
+      manufacturer: 厂家
+      summaryNo: 汇总单号
+      deptName: 开单科室
+      prescriptionNo: 处方号
+      pharmacy: 药房
+      projectType: 项目类型
+      dispenseName: 发药人
+      operator: 操作人
+      operatorName: 操作人
+      operateDate: 操作时间
+      operationTime: 操作时间
+      startDate: 开始日期
+      endDate: 结束日期
+  status:
+    pending: 待发药
+    completed: 已发药
+    refunded: 已退药
+    rejected: 已驳回
+  record:
+    type:
+      dispense: 发药
+      return: 退药
+  mock:
+    name: 张三
+    gender: 男
+    department: 内科
+    ward: 内科疗区
+    bedNo: 1号床
+    drugName: 阿莫西林胶囊
+    usage: 口服，每日三次，每次一粒
+    dispenseSuccess: 发药成功
+    returnSuccess: 退药成功
+    exportSuccess: 导出成功
+    verifySuccess: 审核通过发药成功
+    rejectSuccess: 驳回成功
+    operatorName: 李药师
+  dispense:
+    insurancetype: 医保契约
+    pharmacist: 调配药师
+    date: 日期
+    recipient: 领药人
+    dispenseld: 汇总单号
+    ward: 病区
+    senddrugList: 发药药品列表
+    dispenseStatus: 发药状态
+  reject:
+    field:
+      rejectReason: 驳回理由
+      dispenseld: 汇总单号
+      auditor: 驳回人
+  BillDetail:
+    name: 单据详情
+    id: 编号
+  PIBillList:
+    name: 药房盘点单分页列表
+    id: 单据编号
+  PIBillDelete:
+    name: 药房入库单删除
+    id: 删除的单据编号
+
+sample:
+  tags:
+    t1: 基础示例接口
+    t2: 声明式服务示例接口
